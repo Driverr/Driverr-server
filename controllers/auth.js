@@ -1,9 +1,11 @@
+//Auth for users
+
 var passport = require('passport');
 
-var BasicSctrategy = require('passport-http').BasicSctrategy;
+var BasicStrategy = require('passport-http').BasicStrategy;
 var User = require('../models/user');
 
-passport.use(new BasicSctrategy(
+passport.use(new BasicStrategy(
 	function(username, password, next) {
 		//checking if supplied user exists
 		User.findOne({ username: username }, function(err, user) {

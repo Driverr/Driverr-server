@@ -4,7 +4,8 @@
   "description": "The server for customer and driver APIs",
   "main": "server.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
