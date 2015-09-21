@@ -14,9 +14,11 @@ var locationController = require('./controllers/location');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 var bookController = require('./controllers/booking');
+var driverController = require('./controllers/drivers');
 
 
 //connecting to the driver location database
+//replace with mongolab connection URI 
 var db = mongoose.connect('mongodb://localhost:27017/dr_loc');
 
 
@@ -52,9 +54,21 @@ router.route('/login')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
 
+router.route('/driver-login')
+	.post(driverController.postDrivers)
+	.get(authController.isAuthenticated, driverController.getDrivers);
+
+
 //Create endpoint handler for authenticating users
 router.route('/authenticate')
 	.post(userController.authenticateUser);
+
+
+
+//Create endpoint handler for authenticating users
+router.route('/authenticate-driver')
+	.post(driverController.authenticateDriver);
+
 
 router.route('/booking')
 	.post(bookController.postBooking)

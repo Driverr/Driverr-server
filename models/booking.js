@@ -10,7 +10,8 @@ var BookingSchema = new mongoose.Schema({
 	latitude: Number,
 	date_of_trip: String,
 	time_of_trip: String,
-	driver_id: String
+	driver_id: String,
+	time_of_booking: String
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);
