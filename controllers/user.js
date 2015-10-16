@@ -11,8 +11,11 @@ GET Users
 
 exports.getUsers = function(req, res) {
 	User.find(function(err, users) {
-		if (err) 
+		if (err) {
+			console.log(err);
 			res.send(err);
+		}
+			
 		res.json(users);
 	});
 };

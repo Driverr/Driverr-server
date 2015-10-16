@@ -38,25 +38,25 @@ var router = express.Router();
 
 
 //Create endpoint handlers for /locations
-router.route('/locations')
+/*router.route('/locations')
 	.post(authController.isAuthenticated, locationController.postLocations)
-	.get(locationController.getLocations);
+	.get(locationController.getLocations);*/
 
 
 //Create endpoint handlers for /locations/:location_id
-router.route('/locations/:location_id')
+/*router.route('/locations/:location_id')
 	.get(authController.isAuthenticated, locationController.getLocation)
 	.put(authController.isAuthenticated, locationController.putLocation)
-	.delete(authController.isAuthenticated, locationController.deleteLocation);
+	.delete(authController.isAuthenticated, locationController.deleteLocation);*/
 
-//Create endpoint handlers for /users 
+
+//Create endpoint handlers for registering Users 
 router.route('/login')
-	.post(userController.postUsers)
-	.get(authController.isAuthenticated, userController.getUsers);
+	.post(userController.postUsers);
+	//.get(authController.isAuthenticated, userController.getUsers);
 
-router.route('/driver-login')
-	.post(driverController.postDrivers)
-	.get(authController.isAuthenticated, driverController.getDrivers);
+// router.route('/register')
+//	.post(userController.regUsers)
 
 
 //Create endpoint handler for authenticating users
@@ -65,14 +65,20 @@ router.route('/authenticate')
 
 
 
-//Create endpoint handler for authenticating users
-router.route('/authenticate-driver')
-	.post(driverController.authenticateDriver);
+//Create endpoint handler for registering drivers
+router.route('/driver-register')
+	.post(driverController.postDriver);
+
+//Create endpoint handler for authenticating drivers
+router.route('/driver-login')
+	.post(driverController.authenticateDriver)
+	//.get(authController.isAuthenticated, driverController.getDrivers);
+
 
 
 router.route('/booking')
 	.post(bookController.postBooking)
-	.get(bookController.getBooking);
+	.get(authController.isAuthenticated, bookController.getBooking);
 
 
 
@@ -84,7 +90,7 @@ app.use('/api', router);
 //app.listen();
 
 var server = http.createServer(app).listen(port, function() { 
-	console.log('Driverr server listening on port' + port);
+	console.log('Driverr server listening on port ' + port);
 });
 
 //console.log("server running at 4048!");

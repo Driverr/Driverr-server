@@ -21,13 +21,13 @@ GET Driver
 
 
 /***********************************************
-POST login 
+POST register drivers
 ***********************************************/
-//Create endpoint /api/driver-login for POST
+//Create endpoint /api/driver-register for POST
 
 
 
-exports.postDrivers = function(req, res) {
+exports.postDriver = function(req, res) {
 	if( !req.body.email ) {
 		res.json({ res: false,
 			response: 'Missing email. Please provide your email id' });
@@ -76,9 +76,9 @@ exports.postDrivers = function(req, res) {
 
 
 /***********************************************
-AUTHENTICATE Drivers 
+POST AUTHENTICATE Drivers 
 ***********************************************/
-//Create endpoint /api/authenticate-driver for POST
+//Create endpoint /api/driver-login for POST
 
 exports.authenticateDriver = function(req, res) {
 	if( !req.body.email ) {
@@ -95,14 +95,14 @@ exports.authenticateDriver = function(req, res) {
 	}
 
 
-	Driver.findOne({driver_name: req.body.driver_name}, function(err, driver){
+	Driver.findOne({driver_name: req.body.driver_name}, function(err, driver) {
 		if(!driver){
 			res.json({ res: false,
 				response: 'Driver does not exist'});
 			return;
 		}
 
-		driver.verifyPassword(req.body.password, function(err, isMatch){
+		Driver.verifyPassword(req.body.password, function(err, isMatch){
 			if(err) {
 				res.json({ res: false,
 					response: err});

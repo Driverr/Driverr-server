@@ -61,7 +61,7 @@ exports.postBooking = function(req, res) {
 			response: 'Booking successful!'
 			 });	
 		//have to send back driver_id and other details 
-		mailerNotif (user_email, user_name);
+		//mailerNotif (user_email, user_name);
 		}
 		
 	});
@@ -75,6 +75,7 @@ Mail notification on booking
 ***********************************************/
 //Server should email on incoming booking
 
+/*
 function mailerNotif (user_email, user_name) {
 
 
@@ -113,3 +114,5 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 }
+
+*/
