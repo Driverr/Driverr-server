@@ -75,6 +75,12 @@ router.route('/booking')
 	.get(bookController.getBooking);
 
 
+//Create endpoint handler for accepting Pair Bookings
+
+router.route('/pairbooking')
+	.post(bookController.postPairBooking)
+	.get(bookController.getBooking);
+
 
 //telling app to use router with /api prefix
 app.use('/api', router);

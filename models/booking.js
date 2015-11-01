@@ -14,4 +14,17 @@ var BookingSchema = new mongoose.Schema({
 	time_of_booking: String
 });
 
+var PairBookingSchema = new mongoose.Schema({
+	user_id: String;
+	start_long: Number;
+	start_lat: Number;
+	end_long: Number;
+	end_lat: Number;
+	date_of_trip: Date;
+	start_time: Date;
+	return_time: Date;
+	time_of_booking: Date;
+});
+
 module.exports = mongoose.model('Booking', BookingSchema);
+module.exports = mongoose.model('PairBooking', PairBookingSchema);
